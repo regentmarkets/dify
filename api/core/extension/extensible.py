@@ -43,7 +43,8 @@ class Extensible:
         # get the path of the current class
         current_path = os.path.abspath(cls.__module__.replace(".", os.path.sep) + '.py')
         current_dir_path = os.path.dirname(current_path)
-
+        if not os.path.exists(current_dir_path):
+            return 
         # traverse subdirectories
         for subdir_name in os.listdir(current_dir_path):
             if subdir_name.startswith('__'):

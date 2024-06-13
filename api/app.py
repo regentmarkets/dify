@@ -168,6 +168,7 @@ def register_blueprints(app):
     from controllers.inner_api import bp as inner_api_bp
     from controllers.service_api import bp as service_api_bp
     from controllers.web import bp as web_bp
+    from controllers.enterprise import bp as enterprise_bp
 
     CORS(service_api_bp,
          allow_headers=['Content-Type', 'Authorization', 'X-App-Code'],
@@ -196,6 +197,17 @@ def register_blueprints(app):
          )
 
     app.register_blueprint(console_app_bp)
+
+    CORS(enterprise_bp,
+         resources={
+             r"/*": {"origins": app.config['CONSOLE_CORS_ALLOW_ORIGINS']}},
+         supports_credentials=True,
+         allow_headers=['Content-Type', 'Authorization'],
+         methods=['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS', 'PATCH'],
+         expose_headers=['X-Version', 'X-Env']
+         )
+
+    app.register_blueprint(enterprise_bp)
 
     CORS(files_bp,
          allow_headers=['Content-Type'],

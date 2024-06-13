@@ -1,4 +1,3 @@
-version: '3'
 services:
   # The postgres database.
   db:
@@ -74,6 +73,25 @@ services:
   # ssrf_proxy server
   # for more information, please refer to
   # https://docs.dify.ai/getting-started/install-self-hosted/install-faq#id-16.-why-is-ssrf_proxy-needed
+  web:
+    image: langgenius/dify-web:0.6.10
+    restart: always
+    environment:
+      # The base URL of console application api server, refers to the Console base URL of WEB service if console domain is
+      # different from api or web app domain.
+      # example: http://cloud.dify.ai
+      CONSOLE_API_URL: 'http://localhost:5001'
+      # The URL for Web APP api server, refers to the Web App base URL of WEB service if web app domain is different from
+      # console or api domain.
+      # example: http://udify.app
+      APP_API_URL: 'http://localhost:5001'
+      # The DSN for Sentry error reporting. If not set, Sentry error reporting will be disabled.
+      SENTRY_DSN: ''
+    # uncomment to expose dify-web port to host
+    ports:
+       - "3000:3000"
+
+  # The postgres database.
   ssrf_proxy:
     image: ubuntu/squid:latest
     restart: always
