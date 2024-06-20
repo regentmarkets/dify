@@ -14,15 +14,25 @@ services:
       SECRET_KEY: sk-9f73s3ljTXVcMT3Blb3ljTqtsKiGHXVcMT3BlbkFJLK7U
       # The base URL of console application web frontend, refers to the Console base URL of WEB service if console domain is
       # different from api or web app domain.
-      # example: http://cloud.dify.ai
-      CONSOLE_WEB_URL: ''
+      # example: http://cloud.dify.ai      
       # Password for admin user initialization.
       # If left unset, admin user will not be prompted for a password when creating the initial admin account.
       INIT_PASSWORD: ''
       # The base URL of console application api server, refers to the Console base URL of WEB service if console domain is
       # different from api or web app domain.
       # example: http://cloud.dify.ai
-      CONSOLE_API_URL: ''
+      GOOGLE_CLIENT_ID: '703599173208-2r5n5p076dgha4bvonv7mn5lo5n89ecl.apps.googleusercontent.com'
+      GOOGLE_CLIENT_SECRET: ''
+      ENTERPRISE_ENABLED: 'True'
+      WEB_API_CORS_ALLOW_ORIGINS: 'https://qa115.deriv.dev'
+      CONSOLE_API_URL: 'https://qa115.deriv.dev'
+      CONSOLE_CORS_ALLOW_ORIGINS: 'https://qa115.deriv.dev'
+      NEXT_PUBLIC_API_PREFIX: 'https://qa115.deriv.dev/console/api'
+      NEXT_PUBLIC_PUBLIC_API_PREFIX: 'https://qa115.deriv.dev/api'
+      CONSOLE_WEB_URL: 'https://qa115.deriv.dev'
+      CAN_REPLACE_LOGO: 'True'
+      X-Version: "1.0.0"
+      X-Env: "qa"
       # The URL prefix for Service API endpoints, refers to the base URL of the current API service if api domain is
       # different from console domain.
       # example: http://api.dify.ai
@@ -197,7 +207,6 @@ services:
     image: langgenius/dify-api:0.6.10
     restart: always
     environment:
-      CONSOLE_WEB_URL: ''
       # Startup mode, 'worker' starts the Celery worker for processing the queue.
       MODE: worker
 
@@ -211,6 +220,18 @@ services:
       # The configurations of postgres database connection.
       # It is consistent with the configuration in the 'db' service below.
       DB_USERNAME: postgres
+      GOOGLE_CLIENT_ID: '703599173208-2r5n5p076dgha4bvonv7mn5lo5n89ecl.apps.googleusercontent.com'
+      GOOGLE_CLIENT_SECRET: ''
+      ENTERPRISE_ENABLED: 'True'
+      WEB_API_CORS_ALLOW_ORIGINS: 'https://qa115.deriv.dev'
+      CONSOLE_API_URL: 'https://qa115.deriv.dev'
+      CONSOLE_CORS_ALLOW_ORIGINS: 'https://qa115.deriv.dev'
+      NEXT_PUBLIC_API_PREFIX: 'https://qa115.deriv.dev/console/api'
+      NEXT_PUBLIC_PUBLIC_API_PREFIX: 'https://qa115.deriv.dev/api'
+      CONSOLE_WEB_URL: 'https://qa115.deriv.dev'
+      CAN_REPLACE_LOGO: 'True'
+      X-Version: "1.0.0"
+      X-Env: "qa"
       DB_PASSWORD: difyai123456
       DB_HOST: db
       DB_PORT: 5432

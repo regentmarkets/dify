@@ -45,7 +45,7 @@ class EnterpriseOAuthLogin(Resource):
         
 
         auth_url = oauth_provider.get_authorization_url()
-        return redirect(auth_url)
+        return {"url":auth_url}
 
 
 class EnterpriseOAuthCallback(Resource):
