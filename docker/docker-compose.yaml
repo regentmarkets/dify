@@ -70,9 +70,7 @@ services:
       # Use redis as the broker, and redis db 1 for celery broker.
       CELERY_BROKER_URL: redis://:difyai123456@redis:6379/1
       # Specifies the allowed origins for cross-origin requests to the Web API, e.g. https://dify.app or * for all origins.
-      WEB_API_CORS_ALLOW_ORIGINS: '*'
       # Specifies the allowed origins for cross-origin requests to the console API, e.g. https://cloud.dify.ai or * for all origins.
-      CONSOLE_CORS_ALLOW_ORIGINS: '*'
       # CSRF Cookie settings
       # Controls whether a cookie is sent with cross-site requests,
       # providing some protection against cross-site request forgery attacks
